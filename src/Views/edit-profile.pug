@@ -1,0 +1,27 @@
+extends layout 
+
+block content 
+  .title  
+    h1.title__h1 Profile 
+
+  .line
+
+  .form
+    img(src="/" + loggedInUser.avatarUrl).fomr__img
+    form(method="POST", enctype="multipart/form-data")
+      label(for="avatar")
+      .form__input
+        input(type="file", name="avatar", id="avatar", accept="image/*").form__input-text
+      .form__input
+        input(type="text", name="email", placeholder="Email", value=loggedInUser.email).form__input-text
+      .form__input
+        input(type="text", name="name", placeholder="Name", value=loggedInUser.name).form__input-text
+      .form__input
+        input(type="text", name="username", placeholder="Username", value=loggedInUser.username).form__input-text
+      .form__input
+        input(type="text", name="location", placeholder="Location", value=loggedInUser.location).form__input-text
+      input(type="submit", value="Update").form__btn
+      
+      if (!loggedInUser.socialOnly)
+        .form__a
+          a(href="change-password") 비밀번호 변경 

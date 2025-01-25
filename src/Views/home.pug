@@ -1,0 +1,17 @@
+extends layout
+include mixins/flim
+
+block content 
+  .title  
+    h1.title__h1 Filmansion 
+    span.title__span
+      | 🏬 세상 모든 반려동물과 그들의 짝꿍을 위한 특별한 공간, Filmansion ! 지금 바로 입주하세요.
+  
+  .line
+  
+  .mansion
+    each flim in flims 
+      +flim(flim)
+  
+    else 
+      li Sorry noting found.

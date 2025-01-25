@@ -1,0 +1,44 @@
+.upload {
+  margin-top: 4.2vh;
+  display: flex;
+  justify-content: space-around;
+  .upload__preview {
+    position: relative;
+    width: 614.4px;
+    height: 345.6px;
+    video {
+      border-radius: 20px;
+      box-shadow: $shadow;
+      background-color: $background;
+    }
+    button {
+      position: absolute;
+      border: 1px solid $focus;
+      border-radius: 40px;
+      padding: 0.5vh;
+      color: $focus;
+      background-color: transparent;
+      cursor: pointer;
+      transition: $hover-tran;
+      right: 10px;
+      bottom: 10px;
+    }
+    button:hover {
+      color: $nofocus;
+      background-color: $recording;
+      border: 1px solid $recording;
+    }
+  }
+}
+
+.upload__form {
+  padding: 0;
+  label,
+  span {
+    color: $focus;
+    font-size: $des;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 1vh;
+  }
+}

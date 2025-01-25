@@ -1,0 +1,69 @@
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $nofocus;
+  margin-top: 4vh;
+}
+
+.mansion {
+  margin-top: 4.2vh;
+  height: 82%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+
+  overflow-y: scroll;
+}
+
+.flim-mixin {
+  width: 20vw;
+  height: 28vh;
+  border-radius: 20px;
+  margin: 0 1.2vh;
+  margin-bottom: 4vh;
+  box-sizing: border-box;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.flim-mixin__thumb {
+  width: 100%;
+  height: 75%;
+  border-radius: 20px;
+  background-color: $nofocus;
+}
+
+.flim-mixin__data {
+  position: absolute;
+  bottom: 0;
+}
+
+.flim-mixin__title,
+.flim-mixin__meta {
+  color: $focus;
+}
+
+.flim-mixin__title {
+  font-size: $des;
+  display: block;
+  margin-bottom: 1vh;
+}
+
+.flim-mixin__meta {
+  font-size: 1.5vh;
+  display: flex;
+  align-items: center;
+}
+
+.flim-mixin__meta-img {
+  width: 2vh;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: $shadow;
+  margin-right: 0.5vh;
+}

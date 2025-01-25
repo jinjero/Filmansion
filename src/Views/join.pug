@@ -1,0 +1,36 @@
+extends layout 
+
+block content 
+  .title  
+    h1.title__h1 Join 
+
+  .line 
+
+  if(errorMessage) 
+      span=errorMessage
+
+  .form
+    form(method="POST").form__contain
+      .form__input
+        input(type="email", name="email", placeholder="Email", required).form__input-text
+
+      .form__input
+        input(type="text", name="name", placeholder="Name", required).form__input-text
+
+      .form__input
+        input(type="text", name="username", placeholder="Username", required).form__input-text
+
+      .form__input
+        input(type="password", name="password", placeholder="Password", required).form__input-text
+
+      .form__input
+        input(type="password", name="password2", placeholder="Confirm Password", required).form__input-text
+
+      .form__input
+        input(type="text", name="location", placeholder="Location", required).form__input-text
+
+      input(type="submit", value="Join").form__btn
+
+    .form__join
+      span 이미 계정이 있으신가요?
+      a(href="/login") 로그인

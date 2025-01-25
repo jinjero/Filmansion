@@ -1,0 +1,6 @@
+extends layout
+include mixins/flim
+
+block content 
+  each flim in flims 
+    +flim(flim)

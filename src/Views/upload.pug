@@ -1,0 +1,35 @@
+extends layout
+
+block content 
+  .title  
+    h1.title__h1 Film Upload 
+    
+  .line 
+
+  .upload 
+    .upload__preview
+      video#preview
+      button#actionBtn Start Recording
+
+    if errorMessage 
+      span=errorMessage
+
+    .form.upload__form
+      form(method="POST", enctype="multipart/form-data") 
+        label(for="video") Video File
+        .form__input
+          input(type="file", name="video", id="video", accept="video/*", required).form__input-text
+        label(for="thumb") Thumbnail File
+        .form__input  
+          input(type="file", name="thumb", id="thumb", accept="image/*", required).form__input-text
+        span Information
+        .form__input  
+          input(type="text", name="title", placeholder="Title", required).form__input-text
+        .form__input  
+          input(type="text", name="description", placeholder="Description", required).form__input-text
+        .form__input
+          input(type="text", name="hashtags", placeholder="Hashtags", required).form__input-text
+        input(type="submit", value="Upload").form__btn
+
+block scripts 
+  script(src="/assets/js/recoder.js") 

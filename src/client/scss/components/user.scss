@@ -1,0 +1,28 @@
+.user {
+  display: flex;
+}
+
+.user__img {
+  width: 12vh;
+  border-radius: 50%;
+  box-shadow: $shadow;
+}
+
+.user__text {
+  margin-left: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user__text-name {
+  font-size: 4vh;
+  color: $focus;
+  font-weight: 600;
+  margin-bottom: 2vh;
+}
+
+.user__text-des {
+  font-size: $des;
+  color: $nofocus;
+}

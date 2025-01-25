@@ -1,0 +1,8 @@
+mixin flim(flim)
+  a(href=`/flim/${flim.id}`).flim-mixin
+    div.flim-mixin__thumb(style=`background-image:url(/${flim.thumbUrl});background-size:cover;background-position:center;`)
+      div.flim-mixin__data
+        span.flim-mixin__title=flim.title
+        div.flim-mixin__meta
+          img(src=`/${flim.owner.avatarUrl}`).flim-mixin__meta-img
+          span #{flim.owner.username} • #{flim.meta.views} views

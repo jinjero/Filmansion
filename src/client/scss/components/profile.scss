@@ -1,0 +1,27 @@
+.profile {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: $block;
+  box-shadow: $shadow;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.profile__icon {
+  color: $nofocus;
+  font-size: 2.8vh;
+}
+
+.profile__icon:hover {
+  color: $focus;
+  transition: $hover-tran;
+}

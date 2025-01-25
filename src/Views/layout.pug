@@ -1,0 +1,71 @@
+include mixins/message
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{pageTitle} | #{siteName}
+    link(rel="icon" href="../images/logo.png")
+    link(rel="stylesheet" href="/assets/css/styles.css")
+  body 
+    if messages.error 
+      +message("error", messages.error)
+    if messages.info 
+      +message("info", messages.info) 
+    if messages.success 
+      +message("success", messages.success )
+
+    nav 
+      a(href="/")  
+        img(src="../images/logo.png").nav__logo
+      
+      div.nav__menu 
+        a(
+          href=`/user/${loggedInUser._id}`
+          class = `fa-solid fa-tower-broadcast nav__icon ${currentPath === '/user/' + loggedInUser._id ? ' focus' : ''}`
+        )
+        a(
+          href='/'
+          class = `fa-solid fa-house nav__icon ${currentPath === '/' ? ' focus' : ''}`
+        )
+        a(
+          href='/upload'
+          class = `fa-solid fa-cloud-arrow-up nav__icon ${currentPath === '/upload' ? ' focus' : ''}`
+        )
+      
+      div.nav__log
+        if (loggedIn)
+          a(
+            href='/logout'
+            class = `fa-solid fa-right-from-bracket nav__icon ${currentPath === '/logout' ? ' focus' : ''}`
+          )
+        else
+          a(
+            href='/login'
+            class = `fa-solid fa-right-to-bracket nav__icon ${currentPath === '/login' ? ' focus' : ''}`
+          )
+    
+    .heart 
+      header 
+        .search
+          form(method="GET", action="/search")
+            i.fa-solid.fa-magnifying-glass.search__icon
+            input(type="text", name="keyword", placeholder="Enter the keyword").search__input
+            input(type="submit", hidden)
+        .profile
+          a(href="/user/edit")
+            if (loggedIn)
+              img(src="/" + loggedInUser.avatarUrl).profile__img
+            else 
+              i.fa-solid.fa-user.profile__icon
+
+      
+      main
+        block content 
+      
+      footer &copy; #{new Date().getFullYear()} Filmansion
+
+  script(src="/assets/js/main.js")
+  script(src="https://kit.fontawesome.com/189a080f37.js" crossorigin="anonymous")
+  block scripts

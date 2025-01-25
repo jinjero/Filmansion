@@ -1,0 +1,112 @@
+.form {
+  padding-top: 4.2vh;
+  padding-left: 1vh;
+  height: 82%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fomr__img {
+  margin-bottom: 2vh;
+  width: 13vh;
+  height: 13vh;
+  border-radius: 50%;
+  box-shadow: $shadow;
+  object-fit: cover;
+}
+
+.form__input,
+.form__btn,
+.form__github,
+.form__join {
+  border-radius: 20px;
+  box-shadow: $shadow;
+  background-color: $block;
+  margin-bottom: 2vh;
+  width: 35vw;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+}
+
+.form__input-text {
+  border: none;
+  background-color: $block;
+  outline: none;
+  margin-left: 4vh;
+  font-size: $des;
+  color: $focus;
+  width: 100%;
+}
+
+.form__input-text::placeholder {
+  color: $nofocus;
+}
+
+.form__btn {
+  border: none;
+  background-color: $focus;
+  color: $block;
+  font-size: $des;
+}
+
+.form__line {
+  height: 1px;
+  width: 35vw;
+  background-color: $nofocus;
+  margin-bottom: 2vh;
+}
+
+.form__github {
+  justify-content: center;
+  border: 2px solid $nofocus;
+  background-color: $background;
+  box-shadow: none;
+  i {
+    color: $nofocus;
+    padding-right: 1vh;
+    font-size: $des;
+  }
+  a {
+    text-decoration: none;
+    color: $nofocus;
+    font-size: $des;
+  }
+}
+
+.form__join {
+  margin: 0;
+  box-shadow: none;
+  justify-content: center;
+  background-color: $background;
+  cursor: pointer;
+  span {
+    color: $nofocus;
+  }
+  a {
+    margin-left: 1vh;
+    color: $focus;
+  }
+}
+
+.form__github:hover {
+  background-color: $focus;
+  border: 2px solid $focus;
+  transition: $hover-tran;
+  i {
+    color: $background;
+  }
+  a {
+    color: $background;
+  }
+}
+
+.form__a {
+  text-align: center;
+  a {
+    color: $focus;
+  }
+}

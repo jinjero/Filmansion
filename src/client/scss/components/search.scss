@@ -1,0 +1,40 @@
+.search {
+  width: 75%;
+  position: relative;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  border-radius: 20px;
+  background-color: $block;
+  box-shadow: $shadow;
+}
+
+.search__icon {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $nofocus;
+  font-size: 24px;
+}
+
+.search__input {
+  width: 100%;
+  margin-left: 70px;
+  font-size: 20px;
+  outline: none;
+
+  background-color: $block;
+  color: $focus;
+  border: none;
+}
+
+.search__input::placeholder {
+  color: $nofocus;
+}
+
+.search__input:focus::placeholder {
+  visibility: hidden;
+}

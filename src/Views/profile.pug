@@ -1,0 +1,17 @@
+extends layout 
+include mixins/flim
+
+block content
+  .user  
+    img(src="/" + loggedInUser.avatarUrl).user__img
+    .user__text 
+      h1.user__text-name=user.username 
+      span.user__text-des #{user.username}의 채널입니다.
+
+  .line
+
+  .mansion 
+    each flim in user.flims 
+      +flim(flim)
+    else 
+      li Sorry noting found.

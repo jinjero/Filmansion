@@ -1,0 +1,51 @@
+nav {
+  width: 8%;
+  height: 100%;
+  padding: 15px 10px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: $block;
+  border-radius: 20px;
+  box-shadow: $shadow;
+}
+
+.nav__logo {
+  width: 90%;
+}
+
+.nav__menu,
+.nav__log {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav__menu {
+  height: 60%;
+  justify-content: space-evenly;
+}
+
+.nav__log {
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.nav__icon {
+  font-size: 2.3vw;
+  text-decoration: none;
+  color: $nofocus;
+}
+
+.focus {
+  color: $focus;
+}
+
+.nav__icon:hover {
+  color: $focus;
+  transition: color 0.1s ease-in-out;
+}

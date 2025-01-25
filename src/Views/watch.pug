@@ -1,0 +1,65 @@
+extends layout
+
+block content 
+  .watch
+    .watch__video
+      #videoContainer(data-id=flim._id)
+        video(src="/" + flim.fileUrl)
+        #videoControls.videoControls 
+          input(type="range", min="0", step="1", value="0")#timeline.videoControls__timeline
+          .videoControls__first
+            .videoControls__play
+              span#play.videoControls__playBtn 
+                i.fa-solid.fa-play
+            .videoControls__time 
+              span#currentTime 00:00 
+              span  / 
+              span#totalTime 00:00
+          .videoControls__second
+            .videoControls__volume
+              input(type="range", min="0", max="1", step="0.1", value="1")#volume
+              span#mute
+                i.fa-solid.fa-volume-high
+            .videoControls__fullscreen 
+              span#fullScreen 
+                i.fa-solid.fa-expand
+
+      .watch__info
+        h1=flim.title
+        .watch__info-user
+          a(href=`/user/${flim.owner._id}`)
+            .watch__info-user-img(style=`background-image:url(/${flim.owner.avatarUrl});background-size:cover;background-position:center;`)
+          a.watch__info-user-text(href=`/user/${flim.owner._id}`)=flim.owner.username
+          span • #{flim.meta.views} views
+        .watch__info-des
+          p=flim.description
+          .watch__info-des-last
+            small=new Date(flim.createdAt).toLocaleDateString("ko-kr", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")
+
+            if String(flim.owner._id) === String(loggedInUser._id)
+              .watch__info-des-link
+                a(href=`${flim.id}/edit`).watch__edit 비디오 수정하기
+                a(href=`${flim.id}/delete`) 비디오 삭제하기
+
+    .comment
+      if loggedIn
+        .watch__add-comment
+          form#commentForm.watch__add-comment__form
+            textarea(cols="40", rows="5", placeholder="댓글 남기기") 
+            button
+              i.fa-regular.fa-paper-plane
+
+      div.watch__comment 
+        .watch__comment-line
+        ul 
+          each comment in flim.comments.reverse()
+            li.watch__comment-li(data-id=comment.id)
+              .d1
+                i.fa-regular.fa-comment
+                span.commentText #{comment.text}
+              span.fa-solid.fa-trash-can.deleteComment
+
+block scripts 
+  script(src="/assets/js/videoPlayer.js") 
+  if loggedIn 
+    script(src="/assets/js/commentSection.js") 
