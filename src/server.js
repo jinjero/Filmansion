@@ -29,16 +29,17 @@ app.use(
 );
 
 // ffmpeg ShareArrayBuffer Error
-app.use((req, res, next) => {
-  res.header("Cross-Origin-Embedder-Policy", "credentialless");
-  res.header("Cross-Origin-Opener-Policy", "same-origin");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Cross-Origin-Embedder-Policy", "credentialless");
+//   res.header("Cross-Origin-Opener-Policy", "same-origin");
+//   next();
+// });
 
 app.use(flash());
 app.use(localMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/assets", express.static("assets"));
+app.use("/images", express.static("src/images"));
 app.use("/", rootRouter);
 app.use("/flim", flimRouter);
 app.use("/user", userRouter);

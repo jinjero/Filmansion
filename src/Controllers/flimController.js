@@ -6,7 +6,7 @@ export const home = async (req, res) => {
   const flims = await Flim.find({})
     .sort({ createdAt: "desc" })
     .populate("owner");
-  return res.render("home", { pageTitle: "🏠 Home", flims });
+  return res.render("home", { pageTitle: "Home", flims });
 };
 
 export const search = async (req, res) => {
@@ -19,11 +19,11 @@ export const search = async (req, res) => {
       },
     }).populate("owner");
   }
-  return res.render("search", { pageTitle: "🔍 Search", flims });
+  return res.render("search", { pageTitle: "Search", flims });
 };
 
 export const getUpload = (req, res) => {
-  return res.render("upload", { pageTitle: "📤 Upload" });
+  return res.render("upload", { pageTitle: "Upload" });
 };
 
 export const postUpload = async (req, res) => {
@@ -37,8 +37,8 @@ export const postUpload = async (req, res) => {
       title,
       description,
       hashtags: Flim.formatHashtags(hashtags),
-      fileUrl: video[0].path,
-      thumbUrl: thumb[0].path,
+      fileUrl: video[0].location,
+      thumbUrl: thumb[0].location,
       owner: _id,
     });
     const user = await User.findById(_id);
@@ -48,7 +48,7 @@ export const postUpload = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(400).render("upload", {
-      pageTitle: "📤 Upload",
+      pageTitle: "Upload",
       errorMessage: error._message,
     });
   }

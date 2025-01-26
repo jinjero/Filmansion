@@ -1,10 +1,9 @@
 import bcrypt from "bcrypt";
 import User from "../Models/User";
-import Flim from "../Models/Flim";
 
 // Join
 export const getJoin = (req, res) => {
-  return res.render("join", { pageTitle: "✨ Join" });
+  return res.render("join", { pageTitle: "Join" });
 };
 
 export const postJoin = async (req, res) => {
@@ -12,7 +11,7 @@ export const postJoin = async (req, res) => {
   // Confrim Password
   if (password !== password2) {
     return res.status(400).render("join", {
-      pageTitle: "✨ Join",
+      pageTitle: "Join",
       errorMessage: "비밀번호를 잘못 입력하였습니다.",
     });
   }
@@ -20,7 +19,7 @@ export const postJoin = async (req, res) => {
   const exists = await User.exists({ $or: [{ email }, { username }] });
   if (exists) {
     return res.status(400).render("join", {
-      pageTitle: "✨ Join",
+      pageTitle: "Join",
       errorMessage: "중복된 이메일 또는 닉네임 입니다.",
     });
   }
@@ -36,7 +35,7 @@ export const postJoin = async (req, res) => {
     return res.redirect("/login");
   } catch (error) {
     return res.status(400).render("join", {
-      pageTitle: "✨ Join",
+      pageTitle: "Join",
       errorMessage: error._message,
     });
   }
@@ -44,7 +43,7 @@ export const postJoin = async (req, res) => {
 
 // Login
 export const getLogin = (req, res) => {
-  return res.render("login", { pageTitle: "💖 Login" });
+  return res.render("login", { pageTitle: "Login" });
 };
 
 export const postLogin = async (req, res) => {
@@ -53,7 +52,7 @@ export const postLogin = async (req, res) => {
   const user = await User.findOne({ email, socialOnly: false });
   if (!user) {
     return res.status(400).render("login", {
-      pageTitle: "💖 Login",
+      pageTitle: "Login",
       errorMessage: "가입된 이메일이 존재하지 않습니다.",
     });
   }
@@ -61,7 +60,7 @@ export const postLogin = async (req, res) => {
   const ok = await bcrypt.compare(password, user.password);
   if (!ok) {
     return res.status(400).render("login", {
-      pageTitle: "💖 Login",
+      pageTitle: "Login",
       errorMessage: "비밀번호가 틀렸습니다.",
     });
   }
@@ -160,7 +159,7 @@ export const logout = (req, res) => {
 
 // Edit Profile
 export const getEdit = (req, res) => {
-  return res.render("edit-profile", { pageTitle: "👤 Profile" });
+  return res.render("edit-profile", { pageTitle: "Profile" });
 };
 
 export const postEdit = async (req, res) => {
@@ -176,7 +175,7 @@ export const postEdit = async (req, res) => {
   const updateUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.path : avatarUrl,
+      avatarUrl: file ? file.location : avatarUrl,
       email,
       name,
       username,
@@ -195,7 +194,7 @@ export const getChangePassword = (req, res) => {
     req.flash("error", "Can't Change Password");
     return res.redirect("/");
   } else {
-    return res.render("change-password", { pageTitle: "🔒 Password" });
+    return res.render("change-password", { pageTitle: "Password" });
   }
 };
 
@@ -211,14 +210,14 @@ export const postChangePassword = async (req, res) => {
   const ok = await bcrypt.compare(old, user.password);
   if (!ok) {
     return res.status(400).render("change-password", {
-      pageTitle: "🔒 Password",
+      pageTitle: "Password",
       errorMessage: "비밀번호가 틀립니다.",
     });
   }
 
   if (newPass !== newConfirm) {
     return res.status(400).render("change-password", {
-      pageTitle: "🔒 Password",
+      pageTitle: "Password",
       errorMessage: "새로 입력한 비밀번호가 틀립니다.",
     });
   }
@@ -239,7 +238,7 @@ export const profile = async (req, res) => {
     },
   });
   if (!user) {
-    return res.status(404).render("404", { pageTitle: "🎬 User Not Found" });
+    return res.status(404).render("404", { pageTitle: "User Not Found" });
   }
-  return res.render("profile", { pageTitle: `🎬 ${user.username}`, user });
+  return res.render("profile", { pageTitle: `${user.username}`, user });
 };

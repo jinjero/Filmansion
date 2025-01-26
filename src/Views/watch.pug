@@ -4,7 +4,7 @@ block content
   .watch
     .watch__video
       #videoContainer(data-id=flim._id)
-        video(src="/" + flim.fileUrl)
+        video(src=flim.fileUrl)
         #videoControls.videoControls 
           input(type="range", min="0", step="1", value="0")#timeline.videoControls__timeline
           .videoControls__first
@@ -28,7 +28,7 @@ block content
         h1=flim.title
         .watch__info-user
           a(href=`/user/${flim.owner._id}`)
-            .watch__info-user-img(style=`background-image:url(/${flim.owner.avatarUrl});background-size:cover;background-position:center;`)
+            .watch__info-user-img(style=`background-image:url(${flim.owner.avatarUrl});background-size:cover;background-position:center;`)
           a.watch__info-user-text(href=`/user/${flim.owner._id}`)=flim.owner.username
           span • #{flim.meta.views} views
         .watch__info-des

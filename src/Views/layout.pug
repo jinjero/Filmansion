@@ -6,7 +6,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title #{pageTitle} | #{siteName}
-    link(rel="icon" href="../images/logo.png")
+    link(rel="icon" href="https://filmansion-127.s3.ap-northeast-2.amazonaws.com/logo.png")
     link(rel="stylesheet" href="/assets/css/styles.css")
   body 
     if messages.error 
@@ -18,7 +18,7 @@ html(lang="en")
 
     nav 
       a(href="/")  
-        img(src="../images/logo.png").nav__logo
+        img(src="https://filmansion-127.s3.ap-northeast-2.amazonaws.com/logo.png").nav__logo
       
       div.nav__menu 
         a(
@@ -56,7 +56,7 @@ html(lang="en")
         .profile
           a(href="/user/edit")
             if (loggedIn)
-              img(src="/" + loggedInUser.avatarUrl).profile__img
+              img(src=loggedInUser.avatarUrl).profile__img
             else 
               i.fa-solid.fa-user.profile__icon
 
